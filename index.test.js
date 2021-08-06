@@ -67,3 +67,11 @@ test('test failed, zero build', () => {
 test('test failed, both major and minor versions are zero', () => {
   expect(() => { SemVerCompare('0.0.9', '123.77.5'); }).toThrow(TypeError);
 });
+
+test('test failed, too short version', () => {
+  expect(() => { SemVerCompare('88', '123.77.5'); }).toThrow(TypeError);
+});
+
+test('test failed, too short version, without build', () => {
+  expect(() => { SemVerCompare('1.3', '88.3.8'); }).toThrow(TypeError);
+});
